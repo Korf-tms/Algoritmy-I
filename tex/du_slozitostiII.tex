@@ -1,0 +1,79 @@
+\documentclass[12pt,oneside]{article}
+\usepackage{listings}
+\usepackage[ruled]{algorithm2e}
+\usepackage[czech]{babel}
+\usepackage[shortlabels]{enumitem}
+
+
+\usepackage[a4paper,margin=2.5cm,head=0.5cm,foot=0.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Domácí úkol k cvičení číslo 4}
+\author{}
+
+\begin{document}
+	\maketitle
+	\section{Rozhodnětě a \underline{zdůvodněte}, jestli platí následující tvrzení:}
+	\begin{enumerate}[A)]
+		\item Pro funkci $f(n) = 3n^3 + 7n + 6$ platí:
+		\begin{align}
+			f(n) \in \Omega(n^3), \\
+			f(n) \in \Theta(n^3).
+		\end{align}
+		\item Pro funkci $g(n) = 4n\log(n+2) + n + \sqrt{n}+ 10$ platí:
+		\begin{align}
+			g(n) \in O(n^2), \\
+			g(n) \in \Theta(n\log n).
+		\end{align}
+		\item Pro funkci $h(n) = 3n^3 + 10^4n + 2^{10} $ platí:
+		\begin{align}
+			h(n) \in O(n^3) ,\\
+			h(n) \in \Theta(n^2).
+		\end{align}
+	\end{enumerate}
+	Za dostatečné zdůvodnění se považuje výpočet odpovídající limity nebo ukázka toho, že lze nalézt $c_1, c_2$ a $n_0$ v definicích $\Omega, \Theta, O$, viz přednáška a doporučená literatura.
+	Dostatečné zdůvodnění by mělo obsahovat komentář v přirozeném jazyce, alespoň na úrovni: ,,Tvrzení platí/neplatí protože:\dots``
+	
+	\section{Určete, která z následujících funkcí roste rychleji:}
+	Doporučeno je postupovat výpočtem limit, případné invenci a alternativním postupům se ovšem meze nekladou, dokud jsou správné.
+	Opět je očekáváno zdůvodnění typu: ,,Funkce $f$ roste rychleji, protože:\dots``
+	\begin{enumerate}[A)]
+		\item $n^5$ nebo $n^7$
+		\item $\sqrt[4]{n}$ nebo $\log_2(n)$
+		\item $n^{11}$ nebo $11^n$
+		\item $n^5$ nebo $5n^4 + 5^5n^2 + 5^{5^5}n + 5^{5^{5^5}}$
+		\item $n!$ nebo $n^n$
+	\end{enumerate}
+	
+	\section{Určete a zdůvodněte jaká je složitost daného algoritmu}
+	Určete počet operací násobení, dělení, sčítaní a odečítání nutných pro běh algoritmu, nebo alespoň udělejte a odůvodněte jejich řádový odhad.
+	Předpokládejme, že cena všech operací násobení, sčítání, odečítání a dělení je stejná, a že je nezávislá na velikosti čísel.
+	Dále se nebudeme trápit dělením nulou.
+	
+	Zápis \verb|for| cyklu v algoritmu je myšlený tak, že se začíná v dolní mezi a jde se do horní meze včetně.
+	Obvyklé je chápat vstup algoritmu jako matici s $n$ řádky a $n+1$ sloupci.
+	\begin{algorithm}[h]
+		\caption{What does this do?}
+		\DontPrintSemicolon
+		//Input: $n\times (n+1)$ matrix $A[0\dots n-1; 0 \dots n]$ of real numbers \;
+		\For{$i=0, \dots, n-2$}{
+			\For{$j=i+1, \dots, n-1$}{
+				\For{$k = i, \dots, n$}{
+					$A[j, k] = A[j, k] - A[i, k]*A[j, i]/ A[i, i] $\;
+				}
+			}
+		}
+		\Return {$A$}
+	\end{algorithm}
+	
+	Jak by šlo algoritmus snadno zefektivnit?
+	
+	\section{Vyřešte rekurentní rovnici}
+	Najděte funkci $T$ takovou, že $T(0) = \pi$ pro všechna $n \in \mathbb{N}$ (všechna kladná celá čísla) platí
+	\begin{align}
+		T(n) = 5 + T(n-1).
+	\end{align}
+	
+\end{document}

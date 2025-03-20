@@ -25,21 +25,22 @@ class Point{
 
 
 std::pair<size_t, size_t> findMinDistance(vector<Point>& vec){
-    size_t imin, jmin;    
+    size_t imin, jmin;
     double distance;
     double minDist = std::numeric_limits<double>::max();
+    std::pair<size_t, size_t> result;
 
     for(size_t i = 0; i < vec.size(); i++){
         for(size_t j = i + 1; j < vec.size(); j++){
             distance = vec[i].squaredDistanceTo(vec[j]);
             if( distance < minDist){
                 minDist = distance;
-                imin = i;
-                jmin = j;
+		result.first = i;
+		result.second = j;
             }
         }
     }
-    return {imin, jmin};
+    return result;
 }
 
 

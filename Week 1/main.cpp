@@ -70,7 +70,7 @@ bool isPrime(const int n){
 
     double upperBound = sqrt(n) + 1;
     for(int i = 3; i < upperBound; i += 2){
-        if( n & i == 0) return false;
+        if( n % i == 0) return false;
     }
     return true;
 }

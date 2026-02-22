@@ -30,6 +30,16 @@ vector<int> readIntsFromFile(const string& filename){
     return numbers;
 }
 
+string readTextFromFile(const string &fileName) {
+    std::ifstream file(fileName); // need #include<fstream>
+    if (!file) {
+        std::cerr << "Error: Unable to open file " << fileName << std::endl;
+        exit(1);
+    }
+    string text((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    return text;
+}
+
 void printIntVec(const vector<int>& inVec){
     for(const auto& item : inVec){
         std::cout << item << " ";
@@ -37,11 +47,18 @@ void printIntVec(const vector<int>& inVec){
     std::cout << "\n";
 }
 
-void test(string filename){
+void testReadInts(const string& filename){
     vector<int> numbers;
 
     numbers = readIntsFromFile(filename);
     printIntVec(numbers);
+}
+
+void testReadFile(const string& filename){
+    string text;
+
+    text = readTextFromFile(filename);
+    std::cout << text;
 }
 
 int main(int argc, char* argv[]) {
@@ -55,7 +72,9 @@ int main(int argc, char* argv[]) {
     
     string filename = argv[1];
 
-    test(filename);
+    testReadInts(filename);
+
+    testReadFile(filename);
     
     return 0;
 }

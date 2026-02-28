@@ -31,7 +31,7 @@ vector<int> readIntsFromFile(const string& filename){
 }
 
 string readTextFromFile(const string &fileName) {
-    std::ifstream file(fileName); // need #include<fstream>
+    std::ifstream file(fileName); // needs #include<fstream>
     if (!file) {
         std::cerr << "Error: Unable to open file " << fileName << std::endl;
         exit(1);

@@ -1,0 +1,56 @@
+\documentclass[12pt,oneside]{article}
+\usepackage{listings}
+\usepackage[ruled]{algorithm2e}
+\usepackage[czech]{babel}
+\usepackage[shortlabels]{enumitem}
+
+
+\usepackage{titling}
+\usepackage[a4paper,margin=2.5cm,head=0.5cm,foot=0.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Domácí úkol k cvičení číslo 3}
+\author{\vspace{-1em}}
+\preauthor{}
+\postauthor{}
+\setlength{\droptitle}{-2cm}
+
+\begin{document}
+	\maketitle
+	\section{Rozhodnětě a \underline{zdůvodněte}, jestli platí následující tvrzení:}
+	\begin{enumerate}[A)]
+		\item Pro funkci $f(n) = 4n^3 + 7n^2 + 2n + 11$ platí:
+		\begin{align}
+			f(n) \in \Omega(n), \\
+			f(n) \in \Theta(n^3).
+		\end{align}
+		\vspace{2cm}
+		\item Pro funkci $g(n) = n\log(10n) + n^2 + \sqrt{n + 1}$ platí:
+		\begin{align}
+			g(n) \in O(n^2), \\
+			g(n) \in \Theta(n\log n).
+		\end{align}
+		\vspace{2cm}
+		\item Pro funkci $h(n) = 3n^3 + 4^4n + 10^{10} $ platí:
+		\begin{align}
+			h(n) \in O(n^3) ,\\
+			h(n) \in \Theta(n^3).
+		\end{align}
+	\end{enumerate}
+	\vspace{2cm}
+	Za dostatečné zdůvodnění se považuje výpočet odpovídající limity nebo ukázka toho, že lze nalézt $c_1, c_2$ a $n_0$ v definicích $\Omega, \Theta, O$, viz přednáška a doporučená literatura.
+	Dostatečné zdůvodnění by mělo obsahovat komentář v přirozeném jazyce, alespoň na úrovni: ,,Tvrzení platí/neplatí protože:\dots``
+
+	\section{Určete, která z následujících funkcí roste rychleji:}
+	Doporučeno je postupovat výpočtem limit, případné invenci a alternativním postupům se ovšem meze nekladou, dokud jsou správné.
+	Opět je očekáváno zdůvodnění typu: ,,Funkce $f$ roste rychleji, protože:\dots``
+	\begin{enumerate}[A), itemsep=2.5em]
+		\item $n^3$ nebo $n^4$
+		\item $22n$ nebo $\log_2(n)$
+		\item $n^{4}$ nebo $4^n$
+		\item $n^4$ nebo $4n^3 + 4^{4^4}n^2 + 4^{4^{4^4}}$
+		\item $n!$ nebo $n^n$
+	\end{enumerate}
+\end{document}

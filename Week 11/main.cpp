@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <random>
 
 using std::vector;
 
@@ -18,7 +19,7 @@ size_t lomutoPartition(vector<int>& vec, size_t left, size_t right) {
         }
         // there is no else since the >= pivot elements are already in the right place
     }
-    std::swap(vec[separator], vec[right]); // put pivot in its final position
+    std::swap(vec[separator], vec[left]); // put pivot in its final position
     return separator;
 }
 
@@ -47,13 +48,29 @@ void lomutoQuickSort(vector<int>& vec, size_t left, size_t right) {
         return;
     }
     size_t pivotIndex = lomutoPartition(vec, left, right); // pivot is in place now and we can sort left and right parts independently
-    lomutoQuickSort(vec, left, pivotIndex - 1);
-    lomutoQuickSort(vec, pivotIndex + 1, right);
+    if(pivotIndex > 0) { // only recurse if there actually are elements to the left of the pivot
+        lomutoQuickSort(vec, left, pivotIndex - 1);
+    }
+    if(pivotIndex < right) { // only recurse if there actually are elements to the right of the pivot
+        lomutoQuickSort(vec, pivotIndex + 1, right);
+    }
 }
 
+// note that int is not a good mt19937 seed, but it is good enough for our purposes
+// more correct seed needs to be to use std::seed_seq and use 2 to 8 seed values
+vector<int> generateRandomVector(int length, int minVal, int maxVal, int seed=42){
+    std::mt19937 generator(seed);
+    std::uniform_int_distribution<int> distribution(minVal, maxVal);
+    vector<int> vec;
+    vec.reserve(length);
+    for (int i = 0; i < length; i++) {
+        vec.push_back(distribution(generator));
+    }
+    return vec;
+}
 
 int main() {
-    vector<int> vec = {42, 5, 3, 8, 4, 2, 12, 42, 42, 42};
+    vector<int> vec = generateRandomVector(50, 0, 1000);
     lomutoQuickSort(vec, 0, vec.size() - 1);
     for (int x : vec) {
         std::cout << x << " ";
